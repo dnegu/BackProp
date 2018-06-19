@@ -31,38 +31,32 @@ int main(int argc, char* argv[])
 
 	
 	double beta = 0.3, alpha = 0.1, Thresh =  0.00001;
-
-	
-	// maximum no of iterations during training
 	long num_iter = 2000000;
-
-	
-	// Creating the net
 	CBackProp *bp = new CBackProp(numLayers, lSz, beta, alpha);
 	
-	cout<< endl <<  "Now training the network...." << endl;	
+	cout<< endl <<  "Entrenando..." << endl;	
 	for (long i=0; i<num_iter ; i++)
 	{
 		
 		bp->bpgt(data[i%8], &data[i%8][3]);
 
 		if( bp->mse(&data[i%8][3]) < Thresh) {
-			cout << endl << "Network Trained. Threshold value achieved in " << i << " iterations." << endl;
+			cout << endl << "Red entrenada en  " << i << " iteraciones." << endl;
 			cout << "MSE:  " << bp->mse(&data[i%8][3]) 
 				 <<  endl <<  endl;
 			break;
 		}
 		if ( i%(num_iter/10) == 0 )
 			cout<<  endl <<  "MSE:  " << bp->mse(&data[i%8][3]) 
-				<< "... Training..." << endl;
+				<< "... Entrenando..." << endl;
 
 	}
 	
 	if ( i == num_iter )
-		cout << endl << i << " iterations completed..." 
+		cout << endl << i << " Iteraciones Completadas..." 
 		<< "MSE: " << bp->mse(&data[(i-1)%8][3]) << endl;  	
 
-	cout<< "Now using the trained network to make predctions on test data...." << endl << endl;	
+	cout<< "Prediciendo con la Red Neuronal Entrenada...." << endl << endl;	
 	for ( i = 0 ; i < 8 ; i++ )
 	{
 		bp->ffwd(testData[i]);
