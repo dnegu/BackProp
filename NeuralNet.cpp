@@ -1,5 +1,5 @@
 
-#include "BackProp.h"
+#include "BackProp.hpp"
 
 int main(int argc, char* argv[])
 {
