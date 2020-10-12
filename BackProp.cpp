@@ -1,4 +1,4 @@
-#include "BackProp.h"
+#include "BackProp.hpp"
 #include <time.h>
 #include <stdlib.h>
 
